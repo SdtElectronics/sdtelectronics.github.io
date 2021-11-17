@@ -3,7 +3,7 @@ layout: article
 title: Use a C++ Interpreter to Debug Interactivity
 categories: Programming
 tags: C++ debugging toolbox
-eyeCatcher: assets/gallery/2021-02-18-head-cling.png
+eyeCatcher: https://sdtelectronics.github.io/assets/gallery/2021-02-18-head-cling.png
 ---
 
 C++ is widely known as a statically compiled language. It enjoys the top tier performance but also suffers from great difficulty in debugging due to this reason. You may never expect there is an interpreter for C++ which allows dynamic execution like script languages such as Python, but such an amazing thing does exist. Here is the main character today: [cling](https://root.cern/cling/) the C++ interpreter developed by [Root](https://root.cern/) Team of CERN on the top of LLVM and Clang. You may have played with some toy-like C interpreter already, but cling is a sophisticated project with all features a modern REPL for a regular script language is supposed to have, such as stack trace, variable shadowing and statement value echo back.

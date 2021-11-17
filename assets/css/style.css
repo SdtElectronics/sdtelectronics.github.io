@@ -795,6 +795,7 @@ table th, table td {
 .gridPrev{
     position: relative;
     background-size: cover;
+    background-position: center;
     display: block;
     height: 13rem;
     cursor: pointer;

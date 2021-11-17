@@ -3,7 +3,7 @@ layout: article
 title: Circular Linked List and Placement new
 categories: Programming
 tags: C++ data-structure library
-eyeCatcher: assets/gallery/2021-11-16-head-Circular-Linked-List-and-Placement-new.jpg
+eyeCatcher: https://sdtelectronics.github.io/assets/gallery/2021-11-16-head-Circular-Linked-List-and-Placement-new.jpg
 ---
 
 A circular linked list is a linked list in which the last node points to the first node. It comes handy when dealing with data with a ring structure, but the focus of this article is not the application of circular linked lists. The main problem to be addressed is how the first node can be inserted in the same way as other nodes, and this is explained below:

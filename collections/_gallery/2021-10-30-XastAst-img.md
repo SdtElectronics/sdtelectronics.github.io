@@ -1,4 +1,4 @@
 ---
 layout: image
-src: https://picsum.photos/800/600
+src: https://cdn.hackaday.io/images/5939071636028509006.jpg
 ---

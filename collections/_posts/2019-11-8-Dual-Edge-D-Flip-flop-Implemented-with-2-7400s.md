@@ -3,7 +3,7 @@ layout: article
 title: Dual Edge D Flip-flop Implemented with two 7400s
 categories: Circuit-Design
 tags: digital 7400
-eyeCatcher: assets/gallery/2019-11-8-head-Dual-Edge-D-Flip-flop-Implemented-with-2-7400s.jpeg
+eyeCatcher: https://sdtelectronics.github.io/assets/gallery/2019-11-8-head-Dual-Edge-D-Flip-flop-Implemented-with-2-7400s.jpeg
 ---
 
 Typically, a D flip-flop can only be triggered by either the leading edge or the trailing edge of the clock signal. In some scenario, a flip-flop can be triggered by both edges is required. In this article, an implementation of such flip-flop consists only 2 7400 ICs is proposed.

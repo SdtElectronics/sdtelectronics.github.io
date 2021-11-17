@@ -3,7 +3,7 @@ layout: article
 title: Lite Logger
 categories: Software
 tags: C++ library
-eyeCatcher: assets/gallery/2021-4-10-head-Lite-Logger.png
+eyeCatcher: https://sdtelectronics.github.io/assets/gallery/2021-4-10-head-Lite-Logger.png
 ---
 
 Lightweight, fully-customizable log library for C++17.

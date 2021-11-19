@@ -7,6 +7,7 @@ eyeCatcher: https://sdtelectronics.github.io/assets/gallery/2021-4-10-head-Lite-
 ---
 
 Lightweight, fully-customizable log library for C++17.
+
 [Github repository](https://github.com/SdtElectronics/lite-logger)
 
 ## Highlights

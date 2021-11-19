@@ -1,12 +1,13 @@
 ---
 layout: article
-title: RISC-V 64 SBC under $10
+title: Sub-$10 RISC-V 64 SBC
 categories: Hardware
 tags: linux evb risc-v
 eyeCatcher: https://sdtelectronics.github.io/assets/gallery/2021-10-16-head-RISC-V-64-SBC-under-$10.jpg
 ---
 
 An open-source single board computer under 10$ with a RISC-V 64 Core 
+
 [Github repository](https://github.com/SdtElectronics/Xassette-Asterisk)
 
 ![front](https://github.com/SdtElectronics/Xassette-Asterisk/raw/master/img/front.jpg)
@@ -55,3 +56,9 @@ D1s is an awesome chip with many features to be exploited. Designing a PCB is no
 
 ## Licence
 This project is available under the [CERN OHL-w v2](https://ohwr.org/project/cernohl/wikis/Documents/CERN-OHL-version-2) licence. 
+
+## External Links
+- [News on cnx-software](https://www.cnx-software.com/2021/10/30/open-source-hardware-allwinner-d1s-risc-v-linux-sbc/)
+- [News on hackster.io](https://www.hackster.io/news/the-open-hardware-xassette-asterisk-gives-you-a-sub-10-linux-capable-risc-v-single-board-computer-115481c3ac5f)
+- [News on electronics-lab](https://www.electronics-lab.com/xassette-asterisk-risc-v-64-sbc-features-allwinners-latest-d1s-soc-and-sells-for-less-than-10/)
+- [Talk at RISC-V Open hours](https://www.linkedin.com/posts/drew-fustini-9732421b_risc-v-open-hours-2021-nov-3-activity-6861887437124321280-7i64/)

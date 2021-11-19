@@ -11,6 +11,7 @@ eyeCatcher: https://refstatic.sk/article/od-antarktidy-sa-odtrhol-jeden-z-najvac
 
 
 The goal of Antarctica is evolving to an elegant and feature-rich theme across platforms.
+
 [Github repository](https://github.com/SdtElectronics/jekyll-theme-antarctica)
 
 [Live demo](https://sdtelectronics.github.io/jekyll-theme-antarctica/)

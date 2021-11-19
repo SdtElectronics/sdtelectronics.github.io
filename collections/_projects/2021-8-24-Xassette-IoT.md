@@ -6,6 +6,8 @@ tags: linux evb mips
 eyeCatcher: https://z3.ax1x.com/2021/08/26/huiE1f.jpg
 ---
 
+Versatile card computer based on MT76x8
+
 [Github repository](https://github.com/SdtElectronics/Xassette-IoT)
 ## Hardware Resources
 * SoC: MediaTek MT7628 1xMIPS 24Kc@580Mhz

@@ -1,6 +1,6 @@
 ---
 layout: article
-title: Sub-$10 RISC-V 64 SBC
+title: Sub-10$ RISC-V 64 SBC
 categories: Hardware
 tags: linux evb risc-v
 eyeCatcher: https://sdtelectronics.github.io/assets/gallery/2021-10-16-head-RISC-V-64-SBC-under-$10.jpg
@@ -19,6 +19,11 @@ An open-source single board computer under 10$ with a RISC-V 64 Core
 
 ## About the Chip
 D1s/F133: RISC-V 64 single core @1.008G with in package 64MB DDR2
+
+## Pin Out
+![pinout](https://github.com/SdtElectronics/Xassette-Asterisk/raw/master/img/pinc.jpg)
+
+Pins for LCD and DVP camera can also be used as IOs. See schematic below for detailed pin assignment.
 
 ## Schematic & BOM
 ![schematic](https://github.com/SdtElectronics/Xassette-Asterisk/raw/master/img/schematic.png)

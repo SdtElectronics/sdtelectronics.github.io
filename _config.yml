@@ -39,7 +39,7 @@ template:
 valine:
   appId: "X0MYAuVgPxuPIwl5tDvbt1ab-MdYXbMMI"
   appKey: "2sNBzbQCo5BzNiBqMN2AioBd"
-  serverURLs: "x0myauvg.api.lncldglobal.com"
+  serverURLs: "https://x0myauvg.api.lncldglobal.com"
 
 collections_dir: collections
 collections:

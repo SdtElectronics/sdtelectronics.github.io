@@ -16,7 +16,7 @@ For class defined by ourselves, an invasive way to inspect these is to modify th
 
 ## A Generic Wrapper Implemented as Static Decorator
 When we need to add behavior to existed classes, the decorator pattern comes to our mind. One of the powerful features in C++ is that the inherited class can be templated, which allows us to implement static decorators. For example, if we want to write a decorator which make an object print a message before destruction, it can be implement as below:
-```C++
+```c++
 template <typename T>
 struct Decorator: public T{
     ~Decorator(){
@@ -25,7 +25,7 @@ struct Decorator: public T{
 };
 ```
 Now when a `Decorator<T>` goes out of scope, "destructed" is printed. However, this doesn't help much, as there is no way to initialize `T` inherited by `Decorator<T>`. We can write a constructor accepting an instance of `T`, or even better, we let `Decorator<T>` expose same constructors as `T`, which makes `Decorator<T>` become a drop-in replacement of `T`. In C++11, we can achieve this with a single line, thanks to the feature called "Inheriting constructor":
-```C++
+```c++
 template <typename T>
 struct Decorator: public T{
     using T::T; // inheriting constructors declaration
@@ -40,7 +40,7 @@ However, we shall be aware of that the copy/move constructor are not inherited i
 
 ## Designating Behaviors Added by the Decorator
 We have implemented a decorator to track the destruction of objects, in which the behavior added is rather trivial: a hard-coded message is printed. We'd like to make the added behavior customizable, however, the approaches are pretty limited. We surely don't want to mess up with the constructor, which may interfere with the constructor of underlying type `T` (Plus do this for each time the decorator is used could be quite tedious). Thus, the behavior has to be bound with the type of the decorator. One way is to use virtual method and inheritance to override the behavior defined in the parent decorator, but we have to declare inheriting constructors in each derived decorator. This also breaks the encapsulation, which is not quite elegant. Another way is making the decorator inherit behaviors from user-defined classes (I will use `class M` to refer to it henceforth), while `Decorator<T>` has already inherited `T`, which incurs notorious multiple inheritance. However, this is merely a debugging utility that won't make it way to production code and it's unlikely that the hierarchy will evolve much further, so who cares I guess. If you have better idea to accomplish this, please do share it with me! The segregated structure would be like this:
-```C++
+```c++
 struct Simple{
     void destructed(){
         std::cout << "destructed" << std::endl;
@@ -66,7 +66,7 @@ struct Decorator: public T, public M{
 ```
 ## Extending the Ability of Decorator: Type Inspection and Object Identification
 So far we have made a decorator adding customizable behaviors to class `T`, which can directly replace `T` itself. Not bad! Now let's see how this ability can be exploited to make the inspection more helpful. When the lifetime of multiple types of objects are tracked, we may wonder what type of object is destructed. We can embed the type to messages by writing `class M` for each type, but RTTI (another controversial feature, but again we only use it for debugging purpose) can do this for us automatically. The only problem is how to pass type to `class M`. Make `class M` itself a template would free us from making each member function requiring type info a template, but `M` is already a template parameter for `Decorator<T,M>`, thus we need a *template template (no duplication here) parameter* whose syntax is not very pleasant:
-```C++
+```c++
 template <typename T, template <typename U = T> typename M = Simple>
 struct Decorator: public T, public M<>{
     using T::T; // inheriting constructors declaration
@@ -85,7 +85,7 @@ struct Decorator: public T, public M<>{
 };
 ```
 And `class M` can be implemented with `typeid()` operator and demangling facility provided by the compiler(`__cxa_demangle()` for g++ and clang++ is used here)
-```C++
+```c++
 template <typename T>
 struct Stamped{
     char* type(){
@@ -103,7 +103,7 @@ struct Stamped{
 };
 ```
 We may also want to track the chain that an object is copied, moved and destructed. The address of the object can be used to identify it, where another peculiarity of multiple inheritance arises: `this` in the base and derived class may not have the same value. Methods in `class M` have no way to know where `T` is copied or moved, unless `Decorator<T,M>` tells it by argument. In `class M`, `this` has the type `M*`, while `&rhs` in the following snippet has the type `T*` or `Decorator<T,M>*`, so they can differ even when they are pointing to the same object, which could be confusing. We can pass `T::this` with an additional argument to methods in `class M`, nevertheless being a bit redundant, but this argument comes handy when combining several decorator into a new one.
-```C++
+```c++
 template <typename T, template <typename U = T> typename M = Simple>
 struct Decorator: public T, public M<>{
     using T::T; // inheriting constructors declaration
@@ -132,7 +132,7 @@ struct Decorator: public T, public M<>{
 };
 ```
 The `class M` to pretty print the addresses and type:
-```C++
+```c++
 template <typename T>
 struct Stamped{
     char* type(){

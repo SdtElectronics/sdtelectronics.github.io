@@ -17,7 +17,7 @@ author: SdtElectronics
 copyright: "Unpublished Work (cleft) 2017-{currentYear} {author}"
 
 description: >- # this means to ignore newlines until "baseurl:"
-  "Homepage"
+  Homepage
 baseurl: "/" # the subpath of your site, e.g. /blog
 url: "https://sdtelectronics.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 favicon: "" # the favicon for your site
@@ -39,7 +39,7 @@ template:
 valine:
   appId: "X0MYAuVgPxuPIwl5tDvbt1ab-MdYXbMMI"
   appKey: "2sNBzbQCo5BzNiBqMN2AioBd"
-  serverURLs: "https://x0myauvg.api.lncldglobal.com"
+  serverURLs: https://x0myauvg.api.lncldglobal.com
 
 collections_dir: collections
 collections:

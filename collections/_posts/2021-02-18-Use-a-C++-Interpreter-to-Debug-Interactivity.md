@@ -26,7 +26,7 @@ hello world
 [cling]$ __cplusplus
 (long) 201703
 ```
-Cling can deserialize some objects and their references automatically. The supported objects are mainly STL containers:
+Cling can serialize some objects and their references automatically. The supported objects are mainly STL containers:
 ```C++
 [cling]$ #include <string>
 [cling]$ 
@@ -79,12 +79,7 @@ The text wall is tiresome. Let's see an example demonstrating interact with the 
 ![scheme](https://z3.ax1x.com/2021/11/17/I5oHbt.png)
 
 USB Tethering and network filesystem can be used together to amplify the convenience brought by
-Cling to a whole new level. Thorough USB Tethering, the debugging host and slave can share network together, and communications with the slave can be established by SSH. By mounting network filesystem on the host, code in the 
-storage of the host can be loaded directly by Cling on the slave without downloading[8]
-. This
-effectively eliminates all the compilation and downloading process in debugging required by the
-conventional approach. Furthermore, storing source files on the host allows editing the code with
-feature-rich editors like Visual Studio Code.
+Cling to a whole new level. Thorough USB Tethering, the debugging host and slave can share network together, and communications with the slave can be established by SSH. By mounting network filesystem on the host, code in the storage of the host can be loaded directly by Cling on the slave without downloading. This effectively eliminates all the compilation and downloading process in debugging required by the conventional approach. Furthermore, storing source files on the host allows editing the code with feature-rich editors like Visual Studio Code.
 
 
 ## More Advanced Usages

@@ -29,7 +29,7 @@ template:
 # date format
 # refer to https://shopify.github.io/liquid/filters/date/ if you want to customize this
   date_format: "%b %d, %Y"
-  widgets: colophon comment global_cmt post_meta share
+  widgets: colophon comment global_cmt post_meta share table_of_content
   portfolios: projects gallery
 
 # If you want to generate website sitemap, you can set true

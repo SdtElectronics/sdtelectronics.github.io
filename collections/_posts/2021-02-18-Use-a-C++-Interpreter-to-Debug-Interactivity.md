@@ -4,6 +4,7 @@ title: Use a C++ Interpreter to Debug Interactivity
 categories: Programming
 tags: C++ debugging toolbox
 eyeCatcher: https://sdtelectronics.github.io/assets/gallery/2021-02-18-head-cling.png
+abstract: Type a line of C++ code, then press enter and get the result - does this sounds crazy? Well, not so crazy with the power of the novel C++ interpreter, Cling.
 ---
 
 C++ is widely known as a statically compiled language. It enjoys the top tier performance but also suffers from great difficulty in debugging due to this reason. You may never expect there is an interpreter for C++ which allows dynamic execution like script languages such as Python, but such an amazing thing does exist. Here is the main character today: [cling](https://root.cern/cling/) the C++ interpreter developed by [Root](https://root.cern/) Team of CERN on the top of LLVM and Clang. You may have played with some toy-like C interpreter already, but cling is a sophisticated project with all features a modern REPL for a regular script language is supposed to have, such as stack trace, variable shadowing and statement value echo back.
@@ -12,7 +13,7 @@ Developers with experience writing script languages must have felt that how usef
 
 ## Quick Start
 ### hello world:
-```C++
+``` c++
 [cling]$ #include <stdio.h>
 [cling]$ 
 [cling]$ printf("hello world\n");
@@ -22,12 +23,12 @@ hello world
 
  ### Print Evaluated Values of Statements
  What if you omit the semicolon at the end of a statement? Will you get an error? No, by this cling will print the value of that statement. People have worked with matlab may feel familiar with this: If the ending semicolon isn't omitted, the echo in the console will be disabled, otherwise the evaluated value will be printed:
-```C++
+``` c++
 [cling]$ __cplusplus
 (long) 201703
 ```
 Cling can serialize some objects and their references automatically. The supported objects are mainly STL containers:
-```C++
+``` c++
 [cling]$ #include <string>
 [cling]$ 
 [cling]$ std::string {"str"}
@@ -44,7 +45,7 @@ Cling can serialize some objects and their references automatically. The support
 (std::map<int, char> &) { 0 => '0x00' }
 ```
 Names of functions are also statements. What values will be echoed for them?
-```C++
+``` c++
 [cling]$ atoi
 (int (*)(const char *) throw()) Function @0xb6c7bcd1
   at /usr/include/stdlib.h:104:
@@ -54,14 +55,14 @@ extern int atoi (const char *__nptr)
 It's the signature of the function!
 
 I enabled RTTI in my build script, so the dynamic inspection of types by typeid is also supported:
-```C++
+``` c++
 [cling]$ auto b = std::string ("typed")
 (std::basic_string<char, std::char_traits<char>, std::allocator<char> > &) "typed"
 [cling]$ typeid(b).name()
 (const char *) "NSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE"
 ```
 To convert this mangled type name to readable text, you may wish to use `c++filt`:
-```C++
+``` c++
 c++filt _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
 std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >
 ```
@@ -87,7 +88,7 @@ Cling to a whole new level. Thorough USB Tethering, the debugging host and slave
 Except standard C++ syntax, cling supports some internal commands as well. These commands are started with a dot, and you may have already used one of them to quit cling: `.q`. 
 
 Let's see a command supporting load of external source files: `.L`
-```C++
+``` c++
 # echo 'int val = 42;' > tst.cpp
 # ./cling
 ****************** CLING ******************
@@ -102,7 +103,7 @@ Let's see a command supporting load of external source files: `.L`
 The symbols in loaded files are ready to use now. Notice that cling can NOT handle the dependency of source files loaded for you (it don't know where the dependencies are, apparently), thus if the loaded files depend on other files, you need to load them manually.
 
 A similar command is `.x`. It loads the designated file as well, however, if a function inside has the same name as the file, that function will be called immediately after loading:
-```C++
+``` c++
 # echo 'int tst(){return 42;}' > tst.cpp
 # ./cling
 ****************** CLING ******************
@@ -114,7 +115,7 @@ A similar command is `.x`. It loads the designated file as well, however, if a f
 (int) 42
 ```
  One of the incredible features of cling is it can also load shared libraries (.so)! Notice that you'll need to include the corresponding headers to make the symbols in them accessible:
- ```C++
+ ``` c++
 [cling]$ #include <gpiod.hpp>
 [cling]$ 
 [cling]$ .L /usr/lib/arm-linux-gnueabihf/libgpiod.so.2
@@ -136,7 +137,7 @@ A similar command is `.x`. It loads the designated file as well, however, if a f
 ```
 ## Miscellaneous Commands
 `.I` which adds or prints include searching paths:
- ```C++
+ ``` c++
 [cling]$ .I
 -cxx-isystem
 /usr/include/c++/10
@@ -165,7 +166,7 @@ A similar command is `.x`. It loads the designated file as well, however, if a f
 -nostdinc++
 ```
 `.class`, a powerful command which prints the layout of  specified class:
-```C++
+``` c++
 [cling]$ #include<limits>
 [cling]$ 
 [cling]$ .class std::numeric_limits<char>
@@ -209,7 +210,7 @@ filename     line:size busy function type and name
 (compiled)     (NA):(NA) 0 public: static constexpr char denorm_min() noexcept;
 ```
 Finally, ` .help` command which prints all available (not really, some commands hinted in the ROOT prompt seem to be omitted here) commands and their corresponding usages:
-```C++
+``` c++
 [cling]$ .help
 
  Cling (C/C++ interpreter) meta commands usage

@@ -4,6 +4,7 @@ title: a Non-invasive Way to Investigate IO Connections
 categories: Misc
 tags: hacking Linux hardware
 eyeCatcher: https://github.com/SdtElectronics/sun7i-std-dvr/raw/master/img/pinout.png
+abstract: Get the pin assignment of a board without destroying it.
 ---
 You got a TV set or a driving recorder by chance, and you found it carries a SoC running Linux. What more exciting is that SoC has good documentation and there are some IOs being routed out. You found the chance that something interesting can be made from this device, but you know nothing about how the pads on the board are connected to the chip. You have several options to investigate the connection, such as remove the chip and measure the connection among pads manually. You can even employ some fancy devices like a X-ray to reveal the internal routing of the board, but does this worth it?
 

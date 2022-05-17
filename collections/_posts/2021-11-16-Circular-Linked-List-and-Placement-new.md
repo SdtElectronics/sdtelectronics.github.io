@@ -4,6 +4,7 @@ title: Circular Linked List and Placement new
 categories: Programming
 tags: C++ data-structure library
 eyeCatcher: https://sdtelectronics.github.io/assets/gallery/2021-11-16-head-Circular-Linked-List-and-Placement-new.jpg
+abstract: Placement new is a rarely used feature in C++. This article gives a brief introduction to this feature, and shows how it can be helpful in the implementation of circular linked lists.
 ---
 
 A circular linked list is a linked list in which the last node points to the first node. It comes handy when dealing with data with a ring structure, but the focus of this article is not the application of circular linked lists. The main problem to be addressed is how the first node can be inserted in the same way as other nodes, and this is explained below:
@@ -20,14 +21,14 @@ The first solution seems quite simple and effective, but that additional branch 
 Take a look at our second approach again, and it can be figured out that what we need is reserving the space for the node but not initializing it. The crux is that the allocation and initialization of an object are typically done with a single operation in C++, i.e. `new`. We do know how to allocate a region of raw memory with `malloc` in C, but how about the initialization of an object at the allocated region? That is exactly what the placement `new` operator does. 
 
 The syntax of placement `new` is:
-```c++
+``` c++
 Foo* p = new(raw) Foo();
 ```
 Where `Foo` is the underlying type and `raw` is the pointer to the allocated memory. For more about placement new, you can refer to [this page on isocpp.org](https://isocpp.org/wiki/faq/dtors#memory-pools).
 
 Now we can allocate space for a node at the initialization of the new list and initialize it when a new element is appended. A demonstrative code fragment of implementation would be like this:
 
-```c++
+``` c++
 template<typename T>
 class ccNode{
   public:
@@ -70,16 +71,16 @@ class ccList{
 
 ## Allocation and Destruction
 You may have noted the `allocateMemory<T>()` function in code above. I didn't use `malloc` but wrote this non-existent function on purpose. In C++, we have the C++ way for memory allocation, that is the `allocator<>`. More details about allocators are beyond the scope of this article and I will cover the usage of standard allocator only. After the initialization of an allocator for the designated type `T`, a region of memory for `n` instances of `T` can be allocated by its member function `allocate`:
-```c++
+``` c++
 std::allocator<T> alloc;
 T* p = alloc.allocate(n);
 ```
 The memory allocated by `allocator<>` can only be freed with the `deallocate` function:
-```c++
+``` c++
 alloc.deallocate(p, 1);
 ```
 But this won't destroy the object in the memory. The destructor of that object must be called explicitly in advance to avoid resource leakage:
-```
+``` c++
 p->~T();
 ```
 Destructors are typically called automatically, thus this may seems quite weird, but this operation is valid, and necessary here.

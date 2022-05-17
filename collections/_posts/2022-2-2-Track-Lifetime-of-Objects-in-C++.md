@@ -4,6 +4,7 @@ title: Track Lifetime of Objects in C++
 categories: Programming
 tags: C++ design-pattern
 eyeCatcher: https://sdtelectronics.github.io/assets/gallery/2022-2-2-Track-Lifetime-of-Objects-in-C++.png
+abstract: Objects lifetime management is one of the critical elements in C++ development, but corresponding tools for debugging are rather scarce. This article described a non-invasive to track the invocation of ctors and dtors of classes in C++, which is enabled with the decorator pattern.
 ---
 
 ## Motivation

@@ -4,6 +4,7 @@ title: Sub-10$ RISC-V 64 SBC
 categories: Hardware
 tags: linux evb risc-v
 eyeCatcher: https://sdtelectronics.github.io/assets/gallery/2021-10-16-head-RISC-V-64-SBC-under-$10.jpg
+abstract: An open-source RISC-V 64 single board computer under 10$ based on Allwinner D1s SoC
 ---
 
 An open-source single board computer under 10$ with a RISC-V 64 Core 

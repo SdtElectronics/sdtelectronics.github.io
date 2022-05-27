@@ -4,6 +4,7 @@ title: Theme Antarctica
 categories: misc
 tags: jekyll design
 eyeCatcher: https://refstatic.sk/article/od-antarktidy-sa-odtrhol-jeden-z-najvacsich-zaznamenanych-ladovcov-v-historii~25d92685f6b3b93aefe6.jpg?is=1440x513c&ic=0x439x1579x562&c=2w&s=e0efd5864ab1b7e41b8c7f5e0912f84b404ca30a53df8461106b377c19a24a21
+abstract: A stylish and feature-rich theme for Jekyll using (almost) no JavaScript
 ---
 
 ---

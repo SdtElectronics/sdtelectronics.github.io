@@ -4,6 +4,7 @@ title: Xassette IoT
 categories: Hardware
 tags: linux evb mips
 eyeCatcher: https://z3.ax1x.com/2021/08/26/huiE1f.jpg
+abstract: A single-board computer based on Mediatek MT76x8 Wi-Fi SoC
 ---
 
 Versatile card computer based on MT76x8

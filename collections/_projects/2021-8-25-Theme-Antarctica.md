@@ -10,14 +10,11 @@ abstract: A stylish and feature-rich theme for Jekyll using (almost) no JavaScri
 ---
 ![4U6cuV.png](https://z3.ax1x.com/2021/09/22/4U6cuV.png)
 
-
 The goal of Antarctica is evolving to an elegant and feature-rich theme across platforms.
-
-[Github repository](https://github.com/SdtElectronics/jekyll-theme-antarctica)
 
 [Live demo](https://sdtelectronics.github.io/jekyll-theme-antarctica/)
 
-## Features
+## Highlights
 * Fully responsive layout achieves best visual on different screens
 * Flexible widgets provide extensible functionality
 * Integrated [NerdFonts](www.nerdfonts.com) with 3000+ icons
@@ -29,19 +26,23 @@ The goal of Antarctica is evolving to an elegant and feature-rich theme across p
 There are three ways to install:
 * If you are hosting the site by yourself, you may prefer to [install as a gem-based theme](https://jekyllrb.com/docs/themes/#installing-a-theme)
 * If you are hosting the site on Github pages, you can [install as a remote theme](https://github.blog/2017-11-29-use-any-theme-with-github-pages/)
-* You can also fork the master branch of this repository
+* You can also fork the release branch of this repository
 
 ## Customization
-Customizable options are under [_config.yml](_config.yml). Coments inside will help you to edit them.
+Customizable options are under [_config.yml](https://github.com/SdtElectronics/jekyll-theme-antarctica/blob/dev/_config.yml). Coments inside will help you to edit them.
 
 ## Roadmap
 
-| Feature                     | Planned Version  |
-| :-------------------------- | :--------------: |
-| Scrollable widget bar       | 0.2              |
-| Bottom nav popup expansion  | 0.2              |
-| Comment widget improvement  | 0.2              |
-| Related sites widget        | 0.2              |
-| Related sites widget        | 0.2              |
-| Arcylic color scheme        | 0.3              |
+| Feature                       | Planned Version  | Status |
+| :---------------------------- | :--------------: | :----: |
+| Scrollable widget bar         | 0.2              | √      |
+| Comment widget improvement    | 0.2              | √      |
+| Related sites widget          | 0.2              | √      |
+| Table of contents widget      | 0.2              | √      |
+| Pinned post                   | 0.2              | √      |
+| Abstract/excerpt in preview   | 0.2              | √      |
+| Optimize view on large screen | 0.3              |        |
+| Arcylic color scheme          | 0.3              |        |
 
+## License
+This project is available under [GPLv3](https://github.com/SdtElectronics/jekyll-theme-antarctica/blob/dev/LICENSE) License.

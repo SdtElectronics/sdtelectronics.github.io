@@ -12,7 +12,7 @@ It's well known that inappropriate use of `std::shared_ptr` can lead to memory l
 
 ## A simple example
 It's quite common to have recursive data structures which own a pointer to a child with the same type of itself:
-``` C++
+``` c++
 struct Foo{
     Foo(): child(){}
     Foo(std::unique_ptr< Foo > c): child(std::move(c)){}
@@ -23,7 +23,7 @@ struct Foo{
 };
 ```
 We may want to make a child take the place of its parent, so that it ascends a level in the hierarchy. The simplest method is to use `std::unique_ptr::swap`:
-``` C++
+``` c++
 auto parentPtr = std::make_unique<Foo>(std::make_unique<Foo>());
 parentPtr.swap(parentPtr->child);
 ```
@@ -31,7 +31,7 @@ And then bad things happened. When `parentPtr` goes out of the scope, only the o
 
 ## The simple solution
 The correct way to achieve what we want is just one line more:
-``` C++
+``` c++
 auto parentPtr = std::make_unique<Foo>(std::make_unique<Foo>());
 auto tmp = std::move(parentPtr->child);
 parentPtr.swap(tmp);

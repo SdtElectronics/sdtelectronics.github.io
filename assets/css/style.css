@@ -9,8 +9,12 @@
     --sidebar-full-size: 13;
     --right-total-space: 9rem;
 
-    --tile-fprev-height: 16rem;
-    --tile-lprev-height: 11rem;
+    --tile-first-height: 20rem;
+    --tile-rest-height: 13.2rem;
+    --tile-meta-height: 1.9rem;
+
+    --tile-first-mheight: max(18vw, 13.8rem);
+    --tile-rest-mheight: max(15vw, 11rem);
 
     --tile-inter-margin: 0.9rem;
     --body-inner-margin: 1.3rem;
@@ -81,10 +85,17 @@ html{
     position: fixed;
     height: 100vh;
     width: 100vw;
+    text-align: center;
 }
 
 body{
+    text-align: start;
+    display: inline-block;
+    position: relative;
     margin: 0px;
+    width: 100vw;
+    height: 100%;
+    max-width: 112rem;
     font-family: source sans pro,Helvetica,Arial,sans-serif;
     color: var(--foreground-dark);
 }
@@ -128,7 +139,7 @@ ul{
 }
 
 .fixedCont{
-    position: fixed;
+    position: absolute;
     top: var(--body-inner-margin);
 }
 
@@ -244,7 +255,7 @@ ul{
 }
 
 .sidebarCont{
-    position: fixed;
+    position: absolute;
     overflow-x: visible;
     width: calc(var(--sidebar-elem-size) * 1rem);
     left: calc(var(--sidebar-full-size) * 1rem);
@@ -358,7 +369,7 @@ ul{
     left: calc(var(--sidebar-hori-span) * 1rem + var(--tile-inter-margin));
     height: calc(100vh - var(--body-inner-margin) * 2);
     min-width: 30vw;
-    width: calc(100vw - var(--sidebar-hori-span) * 2rem - var(--right-total-space) - 2 * var(--tile-inter-margin));
+    width: calc(100% - var(--sidebar-hori-span) * 2rem - var(--right-total-space) - 2 * var(--tile-inter-margin));
     /*animation: var(--transition-speed) ease-out 0s 1 toFront;*/
     scroll-behavior: smooth;
     filter: drop-shadow(0px 0px 3px #777);
@@ -372,17 +383,24 @@ ul{
     overflow-y: overlay;
 }
 
+.articleOuter{
+    width: 91.6%;
+    margin: 0 auto;
+    max-width: 57rem;
+}
+
 .articleH1{
     margin: 0px;
-    padding: 2.7rem 2rem 1.2rem 2.1rem;
+    padding: 2.7rem 0px 1.2rem 0px;
     font-size: 2.4rem;
     font-weight: 700;
     color: var(--foreground-emph);
 }
 
 .articleBody{
-    padding: 0rem 2.7rem 1.5rem 2.7rem;
+    padding: 0rem 1.8% 1.5rem 1.8%;
     line-height: 1.5;
+    text-align: justify;
 }
 
 .articleBody h1, .articleBody h2, .articleBody h3, .articleBody h4, .articleBody h5, .articleBody h6{
@@ -390,8 +408,10 @@ ul{
     color: var(--foreground-emph);
 }
 
-.articleBody img{
+.articleBody img, .articleBody svg{
     max-width: 100%;
+    display: block;
+    margin: 0 auto;
 }
 
 .articleBody ul{
@@ -571,11 +591,13 @@ table th, table td {
 
 #midComp>#midContTop+.mulRowElem{
     width: 100%;
-    height: 17.9rem;
+    height: var(--tile-first-height);
+    max-height: var(--tile-first-mheight);
 }
 
 #midContTop+.mulRowElem>.mulRowPrev{
-    height: var(--tile-fprev-height);
+    height: calc(var(--tile-first-height) - var(--tile-meta-height));
+    max-height: calc(var(--tile-first-mheight) - var(--tile-meta-height));
 }
 
 #midContTop+.mulRowElem>h1{
@@ -631,7 +653,7 @@ table th, table td {
 }
 
 .midMulRow{
-    width: calc(100vw - var(--sidebar-hori-span) * 2rem - var(--right-total-space) - var(--tile-inter-margin));
+    width: calc(100% - var(--sidebar-hori-span) * 2rem - var(--right-total-space) - var(--tile-inter-margin));
     display: flex;
     flex-wrap: wrap;
     align-content: stretch;
@@ -642,7 +664,8 @@ table th, table td {
 .mulRowElem{
     margin: var(--tile-inter-margin) var(--tile-inter-margin) 0px 0px;
     position: relative;
-    height: 12.9rem;
+    height: height: var(--tile-rest-height);
+    max-height: var(--tile-rest-mheight);
     max-width: calc(100% - var(--tile-inter-margin));
     min-width: 32%;
     flex-grow: 1;
@@ -654,7 +677,8 @@ table th, table td {
 .mulRowPrev{
     position: relative;
     display: block;
-    height: var(--tile-lprev-height);
+    height: calc(var(--tile-rest-height) - var(--tile-meta-height));
+    max-height: calc(var(--tile-rest-mheight) - var(--tile-meta-height));
     background-size: cover;
     background-position: center;
     cursor: pointer;
@@ -967,7 +991,7 @@ div.bottomPop{
     top: 0px;
     left: 0px;
     display: none;
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.6);
     z-index: -1;
